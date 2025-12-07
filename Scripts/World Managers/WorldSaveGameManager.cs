@@ -40,6 +40,14 @@ namespace VN
 
             yield return null;
         }
+    
+    
+        public int GetWorldSceneIndex()
+        {
+            return worldSceneIndex;
+        }
+    
+    
     }
 
 }
