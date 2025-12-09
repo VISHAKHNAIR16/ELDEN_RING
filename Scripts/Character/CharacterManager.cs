@@ -37,6 +37,11 @@ namespace VN
         }
 
 
+
+        protected virtual void LateUpdate() {
+            
+        }
+
     }
 
 }

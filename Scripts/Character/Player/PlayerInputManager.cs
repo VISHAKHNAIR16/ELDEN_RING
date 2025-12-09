@@ -16,11 +16,17 @@ namespace VN
         // 2. Move Character based on those values
         PlayerControls playerControls;
         [SerializeField] Vector2 movementInput;
-
         public float horizontalInput;
         public float verticalInput;
 
         public float moveAmount;
+
+        
+        [SerializeField] Vector2 cameraInput;
+        public float cameraHorizontalInput;
+        public float cameraVerticalInput;
+
+        
 
 
 
@@ -66,6 +72,7 @@ namespace VN
                 playerControls = new PlayerControls();
 
                 playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
+                playerControls.PlayerCamera.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
             }
 
             playerControls.Enable();
@@ -84,6 +91,7 @@ namespace VN
 
         private void Update() {
             HandleMovementInput();
+            HandleCameraMovementInput();
         }
 
         private void HandleMovementInput()
@@ -121,6 +129,13 @@ namespace VN
             }
         }
 
+
+
+        private void HandleCameraMovementInput()
+        {
+            cameraVerticalInput = cameraInput.y;
+            cameraHorizontalInput = cameraInput.x;
+        }
 
     }
 
